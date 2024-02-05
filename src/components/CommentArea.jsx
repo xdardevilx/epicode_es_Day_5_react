@@ -42,7 +42,7 @@ class CommentArea extends Component {
         {this.state.isLoading && <Loading />}
         {this.state.isError && <Error />}
         <AddComment asin={this.props.asin} />
-        <CommentList commentsToShow={this.state.comments} />
+        <CommentList commentsToShow={this.props.comments} />
       </div>
     );
   }
