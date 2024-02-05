@@ -30,20 +30,22 @@ class BookList extends Component {
           </Col>
         </Row>
         <Row className="g-2 mt-3">
-          {this.props.books
-            .filter((b) =>
-              b.title.toLowerCase().includes(this.state.searchQuery)
-            )
-            .map((b) => (
-              <>
-                <Col xs={12} md={4} key={b.asin}>
-                  <SingleBook propsBook={this.propsBook} book={b} />
-                </Col>
-              </>
-            ))}
-          {/* <Col>
-            <CommentArea />
-          </Col> */}
+          <Col xs={12} md={8}>
+            <Row>
+              {this.props.books
+                .filter((b) =>
+                  b.title.toLowerCase().includes(this.state.searchQuery)
+                )
+                .map((b) => (
+                  <Col xs={12} md={4} key={b.asin}>
+                    <SingleBook propsBook={this.propsBook} book={b} />
+                  </Col>
+                ))}
+            </Row>
+          </Col>
+          <Col>
+            <CommentArea asin={this.props.asin} />
+          </Col>
         </Row>
       </>
     );
