@@ -1,45 +1,46 @@
-import { Component } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Component } from "react";
+import { Button, Form } from "react-bootstrap";
+import { keyAPI } from "../data/constanti";
 
 class AddComment extends Component {
   state = {
     comment: {
-      comment: '',
+      comment: "",
       rate: 1,
       elementId: this.props.asin,
     },
-  }
+  };
 
   sendComment = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       let response = await fetch(
-        'https://striveschool-api.herokuapp.com/api/comments',
+        "https://striveschool-api.herokuapp.com/api/comments",
         {
-          method: 'POST',
+          method: "POST",
           body: JSON.stringify(this.state.comment),
           headers: {
-            'Content-type': 'application/json',
-            Authorization: 'Bearer inserisci-qui-il-tuo-token',
+            "Content-type": "application/json",
+            Authorization: keyAPI,
           },
         }
-      )
+      );
       if (response.ok) {
-        alert('Recensione inviata!')
+        alert("Recensione inviata!");
         this.setState({
           comment: {
-            comment: '',
+            comment: "",
             rate: 1,
             elementId: this.props.asin,
           },
-        })
+        });
       } else {
-        throw new Error('Qualcosa è andato storto')
+        throw new Error("Qualcosa è andato storto");
       }
     } catch (error) {
-      alert(error)
+      alert(error);
     }
-  }
+  };
 
   render() {
     return (
@@ -73,8 +74,7 @@ class AddComment extends Component {
                     rate: e.target.value,
                   },
                 })
-              }
-            >
+              }>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -87,8 +87,8 @@ class AddComment extends Component {
           </Button>
         </Form>
       </div>
-    )
+    );
   }
 }
 
-export default AddComment
+export default AddComment;
