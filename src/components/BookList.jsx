@@ -10,6 +10,7 @@ class BookList extends Component {
   };
 
   propsBook(value) {
+    console.log("questo è il valore", value);
     this.setState({
       currentBook: value,
     });
@@ -38,7 +39,10 @@ class BookList extends Component {
                 )
                 .map((b) => (
                   <Col xs={12} md={4} key={b.asin}>
-                    <SingleBook propsBook={this.propsBook} book={b} />
+                    <SingleBook
+                      propsBook={(value) => this.propsBook(value)}
+                      book={b}
+                    />
                   </Col>
                 ))}
             </Row>
