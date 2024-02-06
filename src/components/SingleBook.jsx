@@ -12,6 +12,7 @@ class SingleBook extends Component {
   };
 // credo di aver eseguito tutti i passaggi corretti ma non riesco a capire perchè non mi passa i dati correttamente
   render() {
+
     const { book } = this.props;
     return (
       <>

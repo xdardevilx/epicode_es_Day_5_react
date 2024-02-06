@@ -10,7 +10,6 @@ class BookList extends Component {
   };
 
   propsBook(value) {
-    console.log("questo è il valore", value);
     this.setState({
       currentBook: value,
     });
@@ -48,7 +47,7 @@ class BookList extends Component {
             </Row>
           </Col>
           <Col>
-            <CommentArea asin={this.props.asin} />
+            <CommentArea asin={this.state.currentBook} />
           </Col>
         </Row>
       </>
